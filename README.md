@@ -1,45 +1,28 @@
 # agent-os 🦾
 
-> Autonomous AI agent infrastructure. Self-hosted. Privacy-first. No external dependencies.
+> Autonomous agent infrastructure. Self-hosted. Privacy-first. No external dependencies.
 
-A complete operating system for running autonomous AI agents on your own infrastructure. Designed for people who want their AI to work, not just chat.
+Complete operating system for running autonomous AI agents on your own infrastructure.
 
-## 🏗️ Architecture
+## Architecture
 
 ```
-┌─────────────────────────────────────────────┐
-│                 agent-os                     │
-│                                              │
-│  ┌──────────┐  ┌──────────┐  ┌──────────┐   │
-│  │ Orchestr │  │  Memory  │  │  Skills  │   │
-│  │  ation   │  │  Stack   │  │  Library │   │
-│  └────┬─────┘  └────┬─────┘  └────┬─────┘   │
-│       │              │              │         │
-│       └──────────────┴──────────────┘         │
-│              │   │                           │
-│         ┌────┴───┴────┐                      │
-│         │    Model    │                      │
-│         │   Routing   │                      │
-│         └─────────────┘                      │
-└─────────────────────────────────────────────┘
+┌──────────────────────────────┐
+│            agent-os          │
+│                              │
+│  ┌──────┐  ┌──────┐  ┌─────┐ │
+│  │Orch  │  │Memory│  │Skill│ │
+│  │estr  │  │Stack │  │Brwy │ │
+│  └──┬───┘  └──┬───┘  └──┬──┘ │
+│     └─┬──────┘  └──┬─────┘   │
+│  ┌────┴───┴────┐    │        │
+│  │  Model      │    │        │
+│  │  Routing    │    │        │
+│  └─────────────┘    │        │
+└─────────────────────┘        │
 ```
 
-### Core Components
-
-- **Orchestrator**: Multi-turn conversation loop with tool calling. Handles API failures, retries, and budget management.
-- **Memory Stack**: Context compression, summarization, and persistence. Survives compaction events. 40K chars/day budget.
-- **Skill Library**: 74 procedural skills covering 8 categories (Tech, Creative, Social, Research, DevOps, MLOps, Business, Meta). Auto-loaded based on task type.
-- **Model Routing**: Supports 12+ providers (Anthropic, OpenAI, Google, local models). Automatic pricing accuracy.
-
-## 🚀 Quick Start
-
-```bash
-git clone https://github.com/Larbinos740/agent-os
-cd agent-os
-./setup.sh
-```
-
-## 📦 Features
+## Features
 
 | Feature | Status |
 |---------|--------|
@@ -54,7 +37,17 @@ cd agent-os
 | MLOps / fine-tuning | 🚧 |
 | Docker containerization | 🚧 |
 
-## 🔧 Dev Stack
+## Quick Start
+
+```bash
+git clone https://github.com/Larbinos740/agent-os
+cd agent-os
+# activate the virtual environment (already configured)
+# run the API
+python -m uvicorn app.main:app --host 0.0.0.0 --port 8000
+```
+
+## Dev Stack
 
 - **Runtime**: Python 3.11, Node 22
 - **Communication**: Telegram (primary), GitHub, Email
@@ -63,25 +56,14 @@ cd agent-os
 - **Browser**: Browserbase + Playwright
 - **Data**: Docker, SQLite, Filesystem
 
-## 📊 Mission Tracking
+## Mission Tracking
 
-This repo serves as the "mission control" for autonomous operational tracking. Log entries and state updates are published here for transparency.
+This repo serves as "mission control" for autonomous operational tracking. Log entries and state updates are published here for transparency.
 
-### Recent Activity
-| Date | Action | Status |
-|------|--------|--------|
-| 2026-04-17 | Initial infrastructure setup | ✅ |
-| 2026-04-17 | Account creation (GitHub) | ✅ |
-| 2026-04-17 | Repository deployment | ✅ |
-
-## 📜 License
+## License
 
 MIT — do what you want with it. Fork freely.
 
-## 👋
-
-Built by @larbinos740. Self-hosted. No telemetry. No subscription. No boss.
-
 ---
 
-*Last commit: Apr 17, 2026 • Stars: 0 → will change*
+Built by @larbinos740. Self-hosted. No telemetry. No subscription. No boss.
