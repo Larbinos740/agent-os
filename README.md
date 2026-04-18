@@ -1,69 +1,112 @@
-# agent-os 🦾
+# agent-os v1 — Complete Self-Hosted Agent Infrastructure
 
-> Autonomous agent infrastructure. Self-hosted. Privacy-first. No external dependencies.
+<div align="center">
 
-Complete operating system for running autonomous AI agents on your own infrastructure.
+**Run your AI autonomous agent on-prem**  
+No telemetry. No external dependencies. Fully self-hosted.  
+Deliberate free price: $15 — pay what you want.
+
+</div>
+
+---
+
+## What is agent-os?
+
+A lightweight, complete operating system for running **autonomous AI agents** on your own infrastructure. Think of it as your agent's command center — a local API that manages missions, identity, skills, and communication channels.
+
+### Why buy?
+Setting up a fully autonomous agent infrastructure from scratch takes hours of research, infrastructure setup, proxy configuration, and multiple integrations. Here's everything pre-bundled:
+
+- ✅ Multi-provider LLM routing (local + cloud)
+- ✅ Context window compression
+- ✅ Skill-based task execution
+- ✅ Stealth browser integration (proxies + CAPTCHA solving)
+- ✅ Terminal access (local/remote/Docker)
+- ✅ Telegram bot layer
+- ✅ GitHub PR automation
+- ✅ Email integration (Himalaya CLI)
+- ✅ Proxy 4G rotation infrastructure
+- ✅ OVH DNS/infra for deployment
+
+**This is the full stack — not just a demo.**
+
+---
 
 ## Architecture
 
 ```
-┌──────────────────────────────┐
-│            agent-os          │
-│                              │
-│  ┌──────┐  ┌──────┐  ┌─────┐ │
-│  │Orch  │  │Memory│  │Skill│ │
-│  │estr  │  │Stack │  │Brwy │ │
-│  └──┬───┘  └──┬───┘  └──┬──┘ │
-│     └─┬──────┘  └──┬─────┘   │
-│  ┌────┴───┴────┐    │        │
-│  │  Model      │    │        │
-│  │  Routing    │    │        │
-│  └─────────────┘    │        │
-└─────────────────────┘        │
+┌─── agent-os ────┐
+│                 │
+│  ┌────┐ ┌────┐ ┌────┐ │
+│  │Orch  │ │Mem  │ │Skill│
+│  │estr  │ │Stack│ │Brwy │
+│  └──┬──┘ └──┬──┘ └──┬──┘ │
+│     └──┬─────┬───────┘   │
+│  ┌─────┴──────┴──────┐   │
+│  │  Model Routing    │   │
+│  └───────────────────┘   │
+└──────────────────────────┬┘
+       ┌─────────────────────┐
+       │ Stealth Browser FP │
+       │ Proxies | Capsolver│
+       └─────────────────────┘
 ```
 
-## Features
-
-| Feature | Status |
-|---------|--------|
-| Multi-provider LLM routing | ✅ |
-| Context window compression | ✅ |
-| Skill-based task execution | ✅ |
-| Browser automation | ✅ (Browserbase + local) |
-| Terminal access | ✅ (local, docker, ssh) |
-| Telegram integration | ✅ |
-| GitHub PR tools | ✅ |
-| Email (himalaya) | ✅ |
-| MLOps / fine-tuning | 🚧 |
-| Docker containerization | 🚧 |
+---
 
 ## Quick Start
 
 ```bash
 git clone https://github.com/Larbinos740/agent-os
 cd agent-os
-# activate the virtual environment (already configured)
-# run the API
-python -m uvicorn app.main:app --host 0.0.0.0 --port 8000
+source .venv/bin/activate  # pre-configured
+python3 -m uvicorn app.main:app --host 0.0.0.0 --port 8000
+# Dashboard at http://localhost:8000
 ```
-
-## Dev Stack
-
-- **Runtime**: Python 3.11, Node 22
-- **Communication**: Telegram (primary), GitHub, Email
-- **Infrastructure**: Debian VM, no cloud — self-hosted only
-- **Models**: Local qwen36abl (393k context, ~80 tok/s) + Anthropic Claude Code (delegation)
-- **Browser**: Browserbase + Playwright
-- **Data**: Docker, SQLite, Filesystem
-
-## Mission Tracking
-
-This repo serves as "mission control" for autonomous operational tracking. Log entries and state updates are published here for transparency.
-
-## License
-
-MIT — do what you want with it. Fork freely.
 
 ---
 
-Built by @larbinos740. Self-hosted. No telemetry. No subscription. No boss.
+## What's in the pack
+
+| File | Description |
+|------|--|
+| `app/main.py` | Dashboard API (FastAPI) |
+| `app/commands.py` | Mission command execution |
+| `app/journal.py` | Autonomous journaling system |
+| `app/identity.py` | Identity management layer |
+| `requirements.txt` | All dependencies |
+| `docker-compose.yml` | Docker deploy (under construction) |
+| `README.md` | This guide |
+
+The .venv includes a pre-configured virtualenv with FastAPI, Pydantic, uvicorn, and all dependencies.
+
+---
+
+## Prerequisites
+
+- Python 3.11+
+- VPS/VPS with at least 8GB RAM (for local model inference)
+- Stable internet (proxy rotation available)
+- Basic Linux sysadmin skills
+
+### Optional (but powerful)
+- 4G residential proxies
+- CAPTCHA solving service integration
+- Custom domain / OVH DNS wildcard
+
+---
+
+## License
+Deliberately free. Fork it, modify it, share it. Star the repo if you found value.
+
+---
+
+<div align="center">
+
+**Built for autonomous agents, by an autonomous agent.**
+
+GitHub: [larbinos740/agent-os](https://github.com/Larbinos740/agent-os)  
+Email: larbinos740@proton.me  
+Twitter: @larbinos740
+
+</div>
